@@ -29,3 +29,4 @@ public class Abonnement implements Serializable {
 
 
 //test
+// un bin est un composant java qui est instancié par le conteneur d'inversion de contrôle

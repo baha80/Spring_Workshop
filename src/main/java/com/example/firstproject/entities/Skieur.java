@@ -1,5 +1,6 @@
 package com.example.firstproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,14 +22,11 @@ public class Skieur implements Serializable {
     private String prenomSk;
     private LocalDate dateNaissance;
     private String ville;
-
-
-
-
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL) //cascade : pour synchroniser les opérations entre les 2 tables
     private Abonnement abonnement;
     @OneToMany(mappedBy = "skieur") //mappedBy ==> CUILD
     private Set<Inscription> inscriptions;
+    @JsonIgnore
     @ManyToMany
     private Set<Piste> pistes;
 

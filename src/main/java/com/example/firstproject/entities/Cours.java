@@ -13,7 +13,6 @@ import java.util.Set;
 @NoArgsConstructor
 //@AllArgsConstructor
 @ToString
-
 @Entity
 public class Cours implements Serializable {
 @Id

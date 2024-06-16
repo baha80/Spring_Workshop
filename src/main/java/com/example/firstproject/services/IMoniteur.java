@@ -13,4 +13,7 @@ public interface IMoniteur {
     public List<Moniteur> getAllMoniteur();
     public Moniteur getMoniteurById(Long numsk);
     public void deleteMoniteur(Long numsk);
+
+    //add moniteur and assign to course
+    public Moniteur addMoniteurAndAssignToCourse(Moniteur moniteur, long numCourse);
 }

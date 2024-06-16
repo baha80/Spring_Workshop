@@ -2,10 +2,12 @@ package com.example.firstproject.restController;
 
 import com.example.firstproject.entities.Moniteur;
 import com.example.firstproject.services.IMoniteur;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
+@AllArgsConstructor
 public class MoniteurRestController {
 
     private IMoniteur moniteurService;
@@ -34,5 +36,12 @@ public class MoniteurRestController {
     @DeleteMapping("/DELETEmoniteur/{numsk}")// supprimer un moniteur par son id
     public void deleteMoniteur(@PathVariable Long numsk){
         moniteurService.deleteMoniteur(numsk);
+    }
+
+
+    //add moniteur and assign to course
+    @PostMapping("/addMoniteurAndAssignToCourse/{numCourse}")
+    public Moniteur addMoniteurAndAssignToCourse(@RequestBody Moniteur moniteur, @PathVariable long numCourse){
+        return moniteurService.addMoniteurAndAssignToCourse(moniteur, numCourse);
     }
 }

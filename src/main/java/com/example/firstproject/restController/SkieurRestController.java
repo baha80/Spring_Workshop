@@ -1,6 +1,7 @@
 package com.example.firstproject.restController;
 
 import com.example.firstproject.entities.Skieur;
+import com.example.firstproject.entities.TypeAbonnement;
 import com.example.firstproject.services.ISkieur;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +34,27 @@ public class SkieurRestController {
     public void deleteSk(@PathVariable Long numsk){
         iSkieur.deleteSkieur(numsk);
     }
+    @GetMapping("/getSkieurByNom/{nom}")
+    public Skieur getSkByNom(@PathVariable String nom){
+        return iSkieur.getSkByNom(nom);
+    }
+    //addInscriAndAssignToSkieur
+
+    //AssignSkieurToPiste
+    @PostMapping("/AssignSkieurToPiste/{numsk}/{numPiste}")
+    public Skieur AssignSkieurToPiste(@PathVariable Long numsk, @PathVariable Long numPiste){
+        return iSkieur.AssignSkieurToPiste(numsk, numPiste);
+    }
+
+    @PostMapping("/addSkieurandAssigntoCours/{numCours}")
+    public Skieur addSkieurandAssigntoCours(@RequestBody Skieur skieur, @PathVariable Long numCours){
+        return iSkieur.addSkieurandAssigntoCours(skieur, numCours);
+    }
+@GetMapping("/retrieveSkieurByTypeAbonn/{typeAbonnement}")
+    public List<Skieur> retrieveSkieurByTypeAbonn(@PathVariable  TypeAbonnement typeAbonnement ){
+        return iSkieur.retrieveSkieurByTypeAbonnement(typeAbonnement);
+}
+
 
 
 
